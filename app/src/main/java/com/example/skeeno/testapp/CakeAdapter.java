@@ -15,6 +15,7 @@ import butterknife.ButterKnife;
 
 /**
  * Created by skeeno on 27/01/2017.
+ *
  */
 
 public class CakeAdapter extends RecyclerView.Adapter<CakeAdapter.CakeViewHolder> {
@@ -27,22 +28,26 @@ public class CakeAdapter extends RecyclerView.Adapter<CakeAdapter.CakeViewHolder
 
     @Override
     public CakeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        //creates the view used for each item in your recycler view - takes in your layout for a list item
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cake_list_row, parent, false);
         return new CakeViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(CakeViewHolder holder, int position) {
+        // binds each element in your data arraylist into holder that makes up one item in the RecView list
         CakeViewHolder cakeHolder = holder;
         Cake cake = mCakeList.get(position);
         cakeHolder.bindCakeToHolder(cake);
     }
 
     @Override
+    //helper method if you want to do something to a particular item on the recycler view
     public int getItemCount() {
         return mCakeList.size();
     }
 
+    //The viewholder holds the data of one item in the recyclerview
     public class CakeViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.name) TextView name;
         @BindView(R.id.price) TextView price;

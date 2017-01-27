@@ -27,13 +27,19 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         generateCakes();
 
+        //this is the only code you need set up the recycler view
+
+        //optimisation - set to true if you're going to frequently add/remove items in the list
+        // so width/height of the recyclerview doesn't change which can affect the size of other views
         recyclerView.setHasFixedSize(true);
+
+        //sets how to the recyclerview should position its items - LinearLayout makes it look like a normal list
+        // that can be vertical/horizontal
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
+        //instantiate and set the the adapter which converts the data you want listed into something the RecView can render
         mCakeAdapter = new CakeAdapter(mCakeList);
         recyclerView.setAdapter(mCakeAdapter);
-
-
     }
 
 
